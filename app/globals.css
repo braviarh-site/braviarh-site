@@ -1,4 +1,3 @@
-/* proativerh-site/app/globals.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,11 +5,100 @@
 @layer base {
   html {
     font-family: var(--font-poppins);
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
   }
+
   body {
     margin: 0;
     padding: 0;
-    /* Scroll-behavior smooth para animações de rolagem */
-    scroll-behavior: smooth;
+    height: 100%;
+    min-height: 100vh;
+    scrollbar-width: thin;
+    scrollbar-color: #FF7F00 #f1f1f1;
   }
+
+  body::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  body::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+
+  body::-webkit-scrollbar-thumb {
+    background-color: #FF7F00;
+    border-radius: 10px;
+    border: 3px solid #f1f1f1;
+  }
+
+  body::-webkit-scrollbar-thumb:hover {
+    background: #E67300;
+  }
+
+  #__next {
+    height: 100%;
+    min-height: 100vh;
+  }
+}
+
+.relative.h-screen > span {
+  height: 100% !important;
+  width: 100% !important;
+  top: 0 !important;
+  left: 0 !important;
+}
+
+.relative.h-screen > span > img {
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: cover !important;
+}
+
+@keyframes bounce-whatsapp {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-bounce-whatsapp {
+  animation: bounce-whatsapp 2s infinite ease-in-out;
+}
+
+@keyframes logo-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-logo-scroll {
+  animation: logo-scroll 30s linear infinite;
+  white-space: nowrap;
+}
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
