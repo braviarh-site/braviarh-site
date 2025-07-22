@@ -34,7 +34,7 @@ export default function NossaHistoriaPage() {
 
     const braviaRHSingles = [
         { imageSrc: "/images/IMG-109.jpg", altText: "Time da Bravia RH em reunião" },
-        { imageSrc: "/images/IMG_6709.jpg", altText: "Consultoria Bravia RH em ação" },
+        { imageSrc: "/images/IMG_6709.JPG", altText: "Consultoria Bravia RH em ação" },
         { imageSrc: "/images/IMG-439.jpg", altText: "Sol Schimmelpfennig apresentando" },
     ];
 
