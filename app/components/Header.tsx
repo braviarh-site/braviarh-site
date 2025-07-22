@@ -1,10 +1,21 @@
-// /app/components/Header.tsx (Layout preferido com funcionalidade mobile integrada)
+// /app/components/Header.tsx (Revisado e Otimizado)
 'use client';
-import { useState } from 'react';
+import { useState } from 'react'; // Importação adicionada
 import Link from 'next/link';
 import Image from 'next/image';
 import { Instagram, Linkedin, Phone, Mail, MessageSquare, Menu, X } from 'lucide-react';
 import { usePathname } from 'next/navigation';
+
+// SUGESTÃO 1: Centralizar os links de navegação em um único local.
+// Isso evita a repetição de código e torna muito mais fácil adicionar ou remover um link no futuro.
+const navLinks = [
+  { href: "/", label: "Início" },
+  { href: "/nossa-historia", label: "Nossa História" },
+  { href: "/nossos-servicos", label: "Nossos Serviços" },
+  { href: "/faq", label: "FAQ" },
+  { href: "/blog", label: "Blog" },
+  { href: "/contato", label: "Contato" },
+];
 
 export default function Header() {
   const pathname = usePathname();
@@ -21,15 +32,13 @@ export default function Header() {
     if (path === '/blog') {
       return pathname.startsWith('/blog');
     }
-    if (path === '/faq') {
-      return pathname === '/faq';
-    }
     return pathname === path;
   };
 
   return (
     <>
-      <header className="fixed top-0 left-0 w-full z-50 bg-primaryBlue/80 shadow-md h-32 backdrop-blur-md">
+      {/* SUGESTÃO 2: Ajuste de z-index para garantir que o menu mobile fique sempre por cima. */}
+      <header className="fixed top-0 left-0 w-full z-40 bg-primaryBlue/90 shadow-md h-32 backdrop-blur-md">
         <div className="container mx-auto flex items-center justify-between px-8 h-full">
           {/* Logo (Esquerda) */}
           <div className="flex-shrink-0">
@@ -37,8 +46,8 @@ export default function Header() {
               <Image
                 src="/images/logo-bravia-azul.png"
                 alt="Logo da Bravia RH"
-                width={350}
-                height={150}
+                width={380}
+                height={180}
                 className="w-auto h-auto"
               />
             </Link>
@@ -46,14 +55,13 @@ export default function Header() {
 
           {/* GRUPO DA DIREITA (Navegação + Contato/CTA) - VISÍVEL APENAS EM DESKTOP */}
           <div className="hidden md:flex items-center gap-12">
-            {/* Menu de Navegação */}
+            {/* Menu de Navegação (Agora renderizado a partir do array navLinks) */}
             <nav className="flex items-center gap-8 text-offWhite text-base uppercase font-semibold">
-              <Link href="/" className={isActive('/') ? 'text-accentOrange' : 'hover:text-accentOrange transition whitespace-nowrap'}>Início</Link>
-              <Link href="/nossa-historia" className={isActive('/nossa-historia') ? 'text-accentOrange' : 'hover:text-accentOrange transition whitespace-nowrap'}>Nossa História</Link>
-              <Link href="/nossos-servicos" className={isActive('/nossos-servicos') ? 'text-accentOrange' : 'hover:text-accentOrange transition whitespace-nowrap'}>Nossos Serviços</Link>
-              <Link href="/faq" className={isActive('/faq') ? 'text-accentOrange' : 'hover:text-accentOrange transition whitespace-nowrap'}>FAQ</Link>
-              <Link href="/blog" className={isActive('/blog') ? 'text-accentOrange' : 'hover:text-accentOrange transition whitespace-nowrap'}>Blog</Link>
-              <Link href="/contato" className={isActive('/contato') ? 'text-accentOrange' : 'hover:text-accentOrange transition whitespace-nowrap'}>Contato</Link>
+              {navLinks.map((link) => (
+                <Link key={link.href} href={link.href} className={isActive(link.href) ? 'text-accentOrange' : 'hover:text-accentOrange transition whitespace-nowrap'}>
+                  {link.label}
+                </Link>
+              ))}
             </nav>
 
             {/* Ícones de contato e CTA */}
@@ -76,9 +84,10 @@ export default function Header() {
             </div>
           </div>
           
-          {/* Botão Mobile (Hambúrguer) - VISÍVEL APENAS EM MOBILE */}
+          {/* Botão Mobile (Hambúrguer) */}
           <div className="md:hidden">
-            <button onClick={toggleMobileMenu} className="text-offWhite text-2xl">
+            {/* SUGESTÃO 3: Melhoria de acessibilidade com aria-label */}
+            <button onClick={toggleMobileMenu} className="text-offWhite text-2xl" aria-label={isMobileMenuOpen ? "Fechar menu" : "Abrir menu"}>
               {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </div>
@@ -86,14 +95,19 @@ export default function Header() {
       </header>
 
       {/* Menu Mobile (Dropdown) */}
-      <div className={`fixed top-32 left-0 w-full bg-primaryBlue shadow-lg md:hidden transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'} z-40`}>
-          <nav className="flex flex-col items-center gap-6 text-offWhite text-lg uppercase py-8">
-            <Link href="/" onClick={toggleMobileMenu} className={isActive('/') ? 'text-accentOrange' : 'hover:text-accentOrange transition'}>Início</Link>
-            <Link href="/nossa-historia" onClick={toggleMobileMenu} className={isActive('/nossa-historia') ? 'text-accentOrange' : 'hover:text-accentOrange transition'}>Nossa História</Link>
-            <Link href="/nossos-servicos" onClick={toggleMobileMenu} className={isActive('/nossos-servicos') ? 'text-accentOrange' : 'hover:text-accentOrange transition'}>Nossos Serviços</Link>
-            <Link href="/faq" onClick={toggleMobileMenu} className={isActive('/faq') ? 'text-accentOrange' : 'hover:text-accentOrange transition'}>FAQ</Link>
-            <Link href="/blog" onClick={toggleMobileMenu} className={isActive('/blog') ? 'text-accentOrange' : 'hover:text-accentOrange transition'}>Blog</Link>
-            <Link href="/contato" onClick={toggleMobileMenu} className={isActive('/contato') ? 'text-accentOrange' : 'hover:text-accentOrange transition'}>Contato</Link>
+      <div className={`fixed top-0 left-0 w-full h-screen bg-primaryBlue md:hidden transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'} z-50`}>
+          <div className="flex justify-end p-8">
+            <button onClick={toggleMobileMenu} className="text-offWhite text-2xl" aria-label="Fechar menu">
+              <X size={32} />
+            </button>
+          </div>
+          {/* Menu mobile também renderizado a partir do array navLinks */}
+          <nav className="flex flex-col items-center justify-center h-full -mt-16 gap-8 text-offWhite text-xl uppercase">
+            {navLinks.map((link) => (
+              <Link key={link.href} href={link.href} onClick={toggleMobileMenu} className={isActive(link.href) ? 'text-accentOrange' : 'hover:text-accentOrange transition'}>
+                {link.label}
+              </Link>
+            ))}
           </nav>
         </div>
     </>
