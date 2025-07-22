@@ -1,6 +1,6 @@
 // /app/components/Header.tsx (Revisado e Otimizado)
 'use client';
-import { useState } from 'react'; // Importação corrigida
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Instagram, Linkedin, Phone, Mail, MessageSquare, Menu, X } from 'lucide-react';
@@ -29,10 +29,8 @@ export default function Header() {
       return pathname.startsWith('/nossos-servicos') || pathname.startsWith('/servicos');
     }
     if (path === '/blog') {
-      // Correção: A lógica para o blog agora considera as páginas de detalhe
       return pathname.startsWith('/blog');
     }
-    // Adicionada a lógica para a página de FAQ que estava em falta
     if (path === '/faq') {
         return pathname === '/faq';
     }
@@ -41,16 +39,17 @@ export default function Header() {
 
   return (
     <>
-      <header className="fixed top-0 left-0 w-full z-40 bg-primaryBlue/10 shadow-md h-32 backdrop-blur-md">
-        <div className="container mx-auto flex items-center justify-between px-8 h-full">
+      {/* CORREÇÃO: Altura do header ajustada para h-24 */}
+      <header className="fixed top-0 left-0 w-full z-40 bg-primaryBlue/70 shadow-md h-24 backdrop-blur-md">
+        <div className="container mx-auto flex items-center justify-between px-4 sm:px-8 h-full">
           {/* Logo (Esquerda) */}
           <div className="flex-shrink-0">
             <Link href="/">
               <Image
                 src="/images/logo-bravia-azul.png"
                 alt="Logo da Bravia RH"
-                width={350}
-                height={150}
+                width={280} // CORREÇÃO: Largura do logo diminuída
+                height={120} // CORREÇÃO: Altura do logo diminuída
                 className="w-auto h-auto"
               />
             </Link>
@@ -97,13 +96,9 @@ export default function Header() {
       </header>
 
       {/* Menu Mobile (Dropdown) */}
-      <div className={`fixed top-0 left-0 w-full h-screen bg-primaryBlue md:hidden transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'} z-50`}>
-          <div className="flex justify-end p-8">
-            <button onClick={toggleMobileMenu} className="text-offWhite text-2xl" aria-label="Fechar menu">
-              <X size={32} />
-            </button>
-          </div>
-          <nav className="flex flex-col items-center justify-center h-full -mt-16 gap-8 text-offWhite text-xl uppercase">
+      {/* CORREÇÃO: Posição do topo ajustada para top-24 */}
+      <div className={`fixed top-24 left-0 w-full bg-primaryBlue shadow-lg md:hidden transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'} z-30`}>
+          <nav className="flex flex-col items-center gap-6 text-offWhite text-lg uppercase py-8">
             {navLinks.map((link) => (
               <Link key={link.href} href={link.href} onClick={toggleMobileMenu} className={isActive(link.href) ? 'text-accentOrange' : 'hover:text-accentOrange transition'}>
                 {link.label}
@@ -114,3 +109,4 @@ export default function Header() {
     </>
   );
 }
+
