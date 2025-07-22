@@ -40,7 +40,7 @@ export default function Header() {
   return (
     <>
       {/* CORREÇÃO: Altura do header ajustada para h-24 */}
-      <header className="fixed top-0 left-0 w-full z-40 bg-primaryBlue/70 shadow-md h-24 backdrop-blur-md">
+      <header className="fixed top-0 left-0 w-full z-40 bg-primaryBlue/10 shadow-md h-24 backdrop-blur-md">
         <div className="container mx-auto flex items-center justify-between px-4 sm:px-8 h-full">
           {/* Logo (Esquerda) */}
           <div className="flex-shrink-0">
