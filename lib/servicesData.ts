@@ -186,7 +186,7 @@ export const allServices: Service[] = [
     title: 'Palestras e Workshops de Qualidade de Vida',
     shortDescription: 'Promova o bem-estar e veja a produtividade crescer.',
     metaDescription: 'Transforme o ambiente de trabalho. Nossas palestras e workshops de Qualidade de Vida (QVT) promovem saúde, felicidade e produtividade para seus colaboradores. Fale com a Bravia RH.',
-    imageSrc: '/images/qvt-palestra.jpg',
+    imageSrc: '/images/14.jpg',
     details: {
       intro: 'Criamos e implementamos programas que cuidam da saúde física e mental de seus colaboradores, resultando em um ambiente de trabalho mais saudável, feliz e produtivo.',
       challenge: 'O estresse no trabalho, a falta de cuidado com a saúde mental e física, e a exaustão minam a energia das equipes, elevam o absenteísmo e impactam diretamente na produtividade e nos resultados.',

@@ -56,9 +56,9 @@ export const allBlogPosts: BlogPost[] = [
       <p class="mb-4">Empresas como Ambev, Nubank e Itaú não se tornaram líderes de mercado por acaso. Por trás de seus produtos e serviços de sucesso, existe algo que não se copia facilmente: uma cultura de liderança intencional.</p>
       <p class="mb-6">A boa notícia é que os princípios aplicados não são exclusivos para corporações bilionárias; o segredo raramente reside em orçamentos gigantescos, mas sim em uma mentalidade estratégica. O que esses líderes fazem de diferente?</p>
       <ol class="space-y-6">
-          <li><strong>1. Contratam pela Cultura, Treinam pela Habilidade:</strong> O alinhamento cultural é inegociável. Eles entendem que é mais fácil ensinar uma ferramenta nova do que ensinar valores como "senso de dono" e colaboração. O processo seletivo se torna um filtro rigoroso de alinhamento humano.</li>
-          <li><strong>2. Feedback é Rotina, Não um Evento:</strong> A cultura do feedback constante, direto e construtivo é o que acelera o desenvolvimento. Líderes de alta performance criam ambientes seguros onde a conversa sobre performance é parte do dia a dia, não um evento anual e temido.</li>
-          <li><strong>3. Autonomia Gera Responsabilidade:</strong> Eles definem o "o quê" (o objetivo) com clareza, mas dão autonomia para que as equipes definam o "como". Essa confiança empodera os times, estimula a inovação e cria um senso de propósito compartilhado.</li>
+          <li><strong> Contratam pela Cultura, Treinam pela Habilidade:</strong> O alinhamento cultural é inegociável. Eles entendem que é mais fácil ensinar uma ferramenta nova do que ensinar valores como "senso de dono" e colaboração. O processo seletivo se torna um filtro rigoroso de alinhamento humano.</li>
+          <li><strong> Feedback é Rotina, Não um Evento:</strong> A cultura do feedback constante, direto e construtivo é o que acelera o desenvolvimento. Líderes de alta performance criam ambientes seguros onde a conversa sobre performance é parte do dia a dia, não um evento anual e temido.</li>
+          <li><strong> Autonomia Gera Responsabilidade:</strong> Eles definem o "o quê" (o objetivo) com clareza, mas dão autonomia para que as equipes definam o "como". Essa confiança empodera os times, estimula a inovação e cria um senso de propósito compartilhado.</li>
       </ol>
       <h3 class="text-2xl font-bold text-accentOrange mt-6 mb-4">Conclusão</h3>
       </ol>
